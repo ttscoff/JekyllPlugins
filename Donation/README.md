@@ -26,4 +26,4 @@ Custom ID and text:
 	{% donate A9KK2MTU7QSJU "Buy me some coffee, ok?" %}
 
 
-I put the stylesheet for my own button in this gist, but you can do whatever you like for the appearance via CSS. The image for my version is [here](http://assets.brettterpstra.com/donation2.png).
+I put the stylesheet for my own button in this gist, but you can do whatever you like for the appearance via CSS. The image for my version is [here](https://raw.github.com/ttscoff/JekyllPlugins/master/Donation/donation2.png).
