@@ -2,7 +2,7 @@
 
 A Liquid tag plugin for Jekyll that creates a PayPal donate button on a page or post.
 
-![My donate button](https://gist.github.com/raw/4108839/430ee1643fa77a18e22e6b5d624996a32c22edc8/DonateButton.gif)
+![My donate button](https://github.com/ttscoff/JekyllPlugins/blob/master/Donation/DonateButton.gif?raw=true)
 
 ### Examples
 
