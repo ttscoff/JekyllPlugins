@@ -11,7 +11,7 @@
 # You can pass in either the jpg/png path or the gif path, as long as both exist.
 #
 # If a JPEG or PNG image with the same base name exists in the same folder,
-# it will be used as the poster image. If not, and ImageMagick's convert command is,
+# it will be used as the poster image. If not, and ImageMagick's convert command is
 # available, a JPEG will be created from the first frame.
 #
 # To provide a path to the convert command, "imagemagick_convert" can be set
@@ -19,10 +19,23 @@
 #
 #   imagemagick_convert: /usr/local/bin/convert
 #
-# If `sips` is available (OS X), image width and height will be included in the tag
+# If ImageMagick's `identify` is available (or set in _config.yml with "imagemagick_identify")
+# image width and height will be included in the tag as attributes. A fallback to `sips` is
+# provided if available (OS X).
+
+class Numeric
+  def to_human
+    units = %w{B KB MB GB TB}
+    e = (Math.log(self)/Math.log(1024)).floor
+    s = "%.1f" % (to_f / 1024**e)
+    s.sub(/\.?0*$/, units[e])
+  end
+end
 
 module Jekyll
   class GifTag < Liquid::Tag
+    # @figcap = "<figcaption>Click to play&hellip;</figcaption>"
+    @figcap = ""
     @img = nil
     @poster = nil
 
@@ -71,17 +84,38 @@ module Jekyll
           end
         end
 
+        size = ''
+        filesize = File.size(File.join(base, @img)).to_human rescue nil
+        unless filesize.nil?
+          size = " (#{filesize})"
+        end
+
         if @poster && error.nil?
           width = ''
           height = ''
-          res = system "which sips &> /dev/null"
-          if res
+          # if the identify command exists, measure image with it
+          identify = context.registers[:site].config['imagemagick_identify']
+          identify ||= 'identify' if system "which identify &> /dev/null"
+
+          if identify
+            img_w = %x{#{identify} -format "%[fx:w]" "#{File.join(base, @poster)}" 2> /dev/null}.strip
+            img_h = %x{#{identify} -format "%[fx:h]" "#{File.join(base, @poster)}" 2> /dev/null}.strip
+            width = %Q{ width="#{img_w}"}
+            height = %Q{ height="#{img_h}"}
+          elsif system "which sips &> /dev/null"
             img_w = %x{sips -g pixelWidth "#{File.join(base, @poster)}"  2> /dev/null|awk '{print $2}'}.strip
             img_h = %x{sips -g pixelHeight "#{File.join(base, @poster)}"  2> /dev/null|awk '{print $2}'}.strip
             width = %Q{ width="#{img_w}"}
             height = %Q{ height="#{img_h}"}
           end
-          %Q{<figure class="animated_gif_frame"><img src="#{@poster}" data-source="#{@img}"#{width}#{height}></figure>}
+
+          cdn = ''
+          # if context.registers[:site].config["production"]
+          #   cdn = context.registers[:site].config["cdn_url"]
+          #   cdn.sub!(/\/$/,'') if cdn
+          # end
+
+          %Q{<figure class="animated_gif_frame" data-caption="GIF#{size}"><img class="animated_gif" src="#{cdn}#{@poster}" data-source="#{cdn}#{@img}"#{width}#{height}>#{@figcap}</figure>}
         else
           error || "<Error processing input, expected syntax: {% gif poster_path %}>"
         end
@@ -127,21 +161,66 @@ Liquid::Template.register_tag('gif', Jekyll::GifTag)
 
 ## CSS
 # figure.animated_gif_frame {
-#   position: relative;
-#   cursor: pointer;
-#   opacity: 0.85;
-#   transition: opacity, 0.2s, ease-in-out; }
-#   figure.animated_gif_frame:hover, figure.animated_gif_frame.playing {
-#     opacity: 1; }
-#   figure.animated_gif_frame::before {
-#     content: ' ';
-#     pointer-events: none;
-#     position: absolute;
-#     z-index: 100;
-#     background: url(/images/gif-play-button.png) center center no-repeat;
-#     width: 100%;
-#     height: 100%; }
-#   figure.animated_gif_frame.playing::before {
-#     display: none; }
-#   figure.animated_gif_frame.playing img {
-#     opacity: 1; }
+#     position: relative;
+#     cursor: pointer;
+#     text-align: center;
+#     @include opacity(0.85);
+#     @include transition(opacity, 0.2s, ease-in-out);
+#     &:hover, &.playing {
+#         @include opacity(1);
+#     }
+
+#     &::before {
+#         content: attr(data-caption);
+#         pointer-events: none;
+#         position: absolute;
+#         z-index: 100;
+#         text-align: center;
+#         line-height: 2;
+#         border: solid 3px #666;
+#         border-radius: 8px;
+#         font-weight: 700;
+#         color: #666;
+#         left: 50%;
+#         margin-left: -80px;
+#         width: 160px;
+#         height: 2em;
+#         top: 50%;
+#         margin-top: -1em;
+#         white-space: nowrap;
+#         font-size: 21px;
+#     }
+
+#     &.playing::before {
+#         display: none;
+#     }
+
+
+#     img {
+#         padding: 0!important;
+#         border: none;
+#         @include box-shadow(none);
+#         @include opacity(0.5);
+#     }
+
+#     figcaption {
+#         position: absolute;
+#         bottom: 0;
+#         background: rgba(0,0,0,.5);
+#         color: white;
+#         display: block;
+#         width: 100%;
+#         padding: 0;
+#         line-height: 2.4;
+#     }
+
+#     &.playing {
+#         img {
+#             @include opacity(1);
+#         }
+
+#         figcaption {
+#             display: none;
+#         }
+#     }
+# }
