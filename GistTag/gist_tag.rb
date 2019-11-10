@@ -44,12 +44,10 @@ module Jekyll
         if parts = @text.match(/([a-z0-9]+)( .+)?/i)
           @gist = parts[1].strip
           @file = parts[2] ? parts[2].strip : ''
-          $stderr.puts "Render gist #{@gist}"
           data  = get_cached_gist || get_gist_from_api
           if data
             html_for_data(data)
           else
-            $stderr.puts "Error rendering #{@gist}"
             "Error loading gist #{@gist}"
           end
         else
@@ -78,13 +76,11 @@ module Jekyll
 
     def get_cached_gist
       if @cache_disabled or @bust_cache
-        $stderr.puts "Skipping cache"
         return nil
       end
       cache_file = get_cache_file
       if File.exist? cache_file
         content = IO.read(cache_file)
-        $stderr.puts "Loading from cache"
         return JSON.parse(content)
       else
         return nil
@@ -163,7 +159,6 @@ module Jekyll
       # source = safe_wrap(source)
 
       res['highlighted'] = source
-      $stderr.puts "Loading from API"
       cache_data res unless @cache_disabled
       res
     end
