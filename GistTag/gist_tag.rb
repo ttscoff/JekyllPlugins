@@ -25,7 +25,6 @@ require 'digest/md5'
 require 'net/https'
 require 'uri'
 require 'json'
-require 'time'
 
 module Jekyll
   class GistTag < Liquid::Tag
@@ -90,10 +89,10 @@ module Jekyll
         json = JSON.parse(content)
         if @check_update
           check = get_gist_from_api
-          if json['updated'] && json['updated'] == check['updated_at']
+          if json['updated'] && json['updated'] == check['updated']
             return json
           else
-            $stderr.puts "Cached gist modified: #{@gist}"
+            # $stderr.puts "Cached gist modified: #{@gist}"
             return gist_to_data(check)
           end
         else
@@ -155,14 +154,12 @@ module Jekyll
         return nil
       end
 
-      updated = json['updated_at']
-
       if ! @file.empty? && files.key?(@file)
         f = files[@file]
       else
         k, f = files.first
       end
-      f['updated'] = Time.parse(updated)
+      f['updated'] = json['updated_at']
       f
     end
 
