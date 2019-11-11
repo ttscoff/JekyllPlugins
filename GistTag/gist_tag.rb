@@ -37,7 +37,7 @@ module Jekyll
       @file           = nil
       @gist           = nil
       @text           = text
-      @check_update   = context.registers[:site].config["gist_check_update"] || false
+      @check_update   = false
       @cache_disabled = false
       @bust_cache     = false
       @cache_folder   = File.expand_path "../.gist-cache", File.dirname(__FILE__)
@@ -46,6 +46,7 @@ module Jekyll
 
     def render(context)
       begin
+        @check_update = context.registers[:site].config["gist_check_update"] || false
         if parts = @text.match(/([a-z0-9]+)( .+)?/i)
           @gist = parts[1].strip
           @file = parts[2] ? parts[2].strip : ''
@@ -92,6 +93,7 @@ module Jekyll
           if json['updated'] && json['updated'] == check['updated_at']
             return json
           else
+            $stderr.puts "Cached gist modified: #{@gist}"
             return gist_to_data(check)
           end
         else
