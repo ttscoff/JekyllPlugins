@@ -16,6 +16,8 @@ Loading from Javascript has the benefit of allowing changes to the gist to show 
 
 The fastest way to bust the cache and update a gist is to delete the cache file. Cache files are named with the gist id and filename in the folder `.gist-cache` in your site root. If you find the offending file and remove it, the gist will be re-fetched on next render. ALL of these solutions require a re-render of the site.
 
+The first option is to just check the updated date every time a gist is rendered. This means an API call for every gist, on every build, but it's not terribly resource/time expensive. Pygments is only called if the updated date is different from the stored date. To enable this, add `gist_check_update: true` in _config.yml.
+
 This plugin includes a `gistnocache` tag to prevent caching, and `gistbust` to skip loading from the cache, but update it with the result (for one-off usage and forced updates).
 
 This would never cache the file:

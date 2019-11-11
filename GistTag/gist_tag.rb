@@ -5,6 +5,9 @@
 #   Includes `gistnocache` tag to prevent caching, and `gistbust` to skip loading the cache but update the
 #   result (for one-off usage)
 #
+#   Set gist_check_update to true in _config.yml and the tag will check the API to see if the gist has been
+#   updated on every render.
+#
 # Syntax {% gist gist_id optional_filename %}
 #
 # Example:
@@ -22,6 +25,7 @@ require 'digest/md5'
 require 'net/https'
 require 'uri'
 require 'json'
+require 'time'
 
 module Jekyll
   class GistTag < Liquid::Tag
@@ -33,6 +37,7 @@ module Jekyll
       @file           = nil
       @gist           = nil
       @text           = text
+      @check_update   = context.registers[:site].config["gist_check_update"] || false
       @cache_disabled = false
       @bust_cache     = false
       @cache_folder   = File.expand_path "../.gist-cache", File.dirname(__FILE__)
@@ -44,11 +49,11 @@ module Jekyll
         if parts = @text.match(/([a-z0-9]+)( .+)?/i)
           @gist = parts[1].strip
           @file = parts[2] ? parts[2].strip : ''
-          data  = get_cached_gist || get_gist_from_api
+          data  = get_cached_gist || get_data_from_api
           if data
             html_for_data(data)
           else
-            "Error loading gist #{@gist}"
+            %Q{<p><code style="color:red">Error loading gist #{@gist}</code></p>}
           end
         else
           ""
@@ -81,7 +86,17 @@ module Jekyll
       cache_file = get_cache_file
       if File.exist? cache_file
         content = IO.read(cache_file)
-        return JSON.parse(content)
+        json = JSON.parse(content)
+        if @check_update
+          check = get_gist_from_api
+          if json['updated'] && json['updated'] == check['updated_at']
+            return json
+          else
+            return gist_to_data(check)
+          end
+        else
+          return json
+        end
       else
         return nil
       end
@@ -111,6 +126,11 @@ module Jekyll
       data.body
     end
 
+    def get_data_from_api
+      f = get_gist_from_api
+      gist_to_data(f)
+    end
+
     def get_gist_from_api
       api_url           = %Q{https://api.github.com/gists/#{@gist}}
       raw_uri           = URI.parse api_url
@@ -132,13 +152,21 @@ module Jekyll
       unless files
         return nil
       end
-      res = {'gist' => @gist}
+
+      updated = json['updated_at']
 
       if ! @file.empty? && files.key?(@file)
         f = files[@file]
       else
         k, f = files.first
       end
+      f['updated'] = Time.parse(updated)
+      f
+    end
+
+    def gist_to_data(f)
+      res = {'gist' => @gist}
+      res['updated'] = f['updated']
       res['name'] = f['filename']
 
       res['raw_url'] = f['raw_url']
