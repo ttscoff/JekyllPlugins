@@ -76,7 +76,7 @@ Additional syntax:
 
 ## Apple Style
 
-Most of the rules from Apple's keyboard modifier style guide are applied.
+Most of the rules from the keyboard modifier section of [Apple's style guide](https://help.apple.com/applestyleguide/) are applied.
 
 * Sorts modifiers by Apple's menu display order (Control, Option, Shift, Command). You can write them in any order and output will be correct
 * When not using symbols, keys are separated with `-`, e.g. "Shift-Command-?"
