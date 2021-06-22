@@ -14,29 +14,36 @@ Creates:
 
 ![](symbolsplus.png)
 
-## Output Markup
+## Installation
 
-Symbols are replaced with HTML entities wherever possible. Markup is formatted to work well both visually and with screen readers.
+Just drop the `kbd_tag.rb` file into your Jekyll plugins folder (`/_plugins` in most cases). Then you're ready to use the `{% kbd %}` tag in your posts and pages.
 
-Output has markup elements for each character, with appropriate classes, making CSS styling very flexible.
+## Configuration
 
-A title attribute applied to container span with natural language translation of symbols ("⇧⌘⎋" => "Shift-Command-Escape"), allowing the user to hover over the key combo and have it explained in a tooltip.
+In `_config.yml`, include a `kbd` section to determine formatting.
 
-The output pictured above looks like this: 
+      kbd:
+        # Use symbols for modifier keys (Command, Option, etc.). 
+        # Apple's guidelines say to spell them out in most cases, 
+        # but personally I prefer to use symbols.
+        use_modifier_symbols: true
 
-    <span class="keycombo" title="Control-Option-Command-R">
-        <kbd class="mod">&#8963;</kbd>+<kbd class="mod">&#8997;</kbd>+<kbd class="mod">&#8984;</kbd>+<kbd class="key">R</kbd>
-    </span>
+        # Use symbols for non-character keys (Home, PgUp, Right Arrow, etc.). 
+        # Again, Apple recommends spelling these out. A lot of the symbols are 
+        # unfamiliar to users, like Home (↖) or Escape (⎋). Your choice.
+        use_key_symbols: true
 
-If the key is a symbol, a class of `symbol` is applied to the `<kbd>` tag.
+        # When using symbols for modifiers, Apple recommends separating them 
+        # with `+`. This looks like ⌘+⌥+C. Disable this to just output ⌘⌥C. 
+        # Ignored if not using modifier symbols.
+        use_plus_sign: true
 
-If the keys are separated by `-` or `+` (depending on settings), a class of `separated` is applied to the containing `<span>`. If there's no separator, the class `combined` is applied.
+With all symbols set to true and `use_plus_sign` disabled, output looks like this (using my default styling):
 
-## Styling
+![](symbolsonly.png)
 
-See `sass/kbd.scss` for the styling I use on my own sites, and modify it to suit your needs. It handles `Command-P` with different styling than `⌘P`, and should adapt to whatever output settings you use.
 
-## Liquid Tag
+## Syntax
 
 The tag is just `{% kbd [your key combo] %}`. The key combo syntax is very flexible:
 
@@ -77,26 +84,24 @@ Most of the rules from Apple's keyboard modifier style guide are applied.
 * When no modifiers are present, shift is applied to uppercase keys ("F" = "Shift-F", "f" = "F")
 * When shift modifier is used, keys using lower of 2-symbol keys switches to upper ("Shift-/" => "Shift-?")
 
-## Configuration
+## Output Markup
 
-In `_config.yml`, include a `kbd` section to determine formatting.
+Symbols are replaced with HTML entities wherever possible. Markup is formatted to work well both visually and with screen readers.
 
-      kbd:
-        # Use symbols for modifier keys (Command, Option, etc.). 
-        # Apple's guidelines say to spell them out in most cases, 
-        # but personally I prefer to use symbols.
-        use_modifier_symbols: true
+Output has markup elements for each character, with appropriate classes, making CSS styling very flexible.
 
-        # Use symbols for non-character keys (Home, PgUp, Right Arrow, etc.). 
-        # Again, Apple recommends spelling these out. A lot of the symbols are 
-        # unfamiliar to users, like Home (↖) or Escape (⎋). Your choice.
-        use_key_symbols: true
+A title attribute applied to container span with natural language translation of symbols ("⇧⌘⎋" => "Shift-Command-Escape"), allowing the user to hover over the key combo and have it explained in a tooltip.
 
-        # When using symbols for modifiers, Apple recommends separating them 
-        # with `+`. This looks like ⌘+⌥+C. Disable this to just output ⌘⌥C. 
-        # Ignored if not using modifier symbols.
-        use_plus_sign: true
+The output pictured above looks like this: 
 
-With all symbols set to true and `use_plus_sign` disabled, output looks like this (using my default styling):
+    <span class="keycombo" title="Control-Option-Command-R">
+        <kbd class="mod">&#8963;</kbd>+<kbd class="mod">&#8997;</kbd>+<kbd class="mod">&#8984;</kbd>+<kbd class="key">R</kbd>
+    </span>
 
-![](symbolsonly.png)
+If the key is a symbol, a class of `symbol` is applied to the `<kbd>` tag.
+
+If the keys are separated by `-` or `+` (depending on settings), a class of `separated` is applied to the containing `<span>`. If there's no separator, the class `combined` is applied.
+
+## Styling
+
+See `sass/kbd.scss` for the styling I use on my own sites, and modify it to suit your needs. It handles `Command-P` with different styling than `⌘P`, and should adapt to whatever output settings you use.
