@@ -72,7 +72,7 @@ Additional syntax:
 Most of the rules from Apple's keyboard modifier style guide are applied.
 
 * Sorts modifiers by Apple's menu display order (Control, Option, Shift, Command). You can write them in any order and output will be correct
-* When not using symbols, keys are separated with `-`, e.g. "Command-Option-?"
+* When not using symbols, keys are separated with `-`, e.g. "Shift-Command-?"
 * When using symbols, keys are separated with `+` (separator can be disabled entirely in settings), e.g. "⌘+⌥+?"
 * When no modifiers are present, shift is applied to uppercase keys ("F" = "Shift-F", "f" = "F")
 * When shift modifier is used, keys using lower of 2-symbol keys switches to upper ("Shift-/" => "Shift-?")
