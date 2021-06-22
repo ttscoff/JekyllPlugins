@@ -12,7 +12,7 @@ Examples:
 
 Creates:
 
-![](symbolsonly.png)
+![](symbolsplus.png)
 
 ## Output Markup
 
@@ -42,16 +42,16 @@ The tag is just `{% kbd [your key combo] %}`. The key combo syntax is very flexi
 
 1. You can use the modifier keys that would be found in a keybinding PLIST.
     
-    - ^ = Control
-    - ~ = Option
-    - $ = Shift
-    - @ = Command
+    - `^` = Control
+    - `~` = Option
+    - `$` = Shift
+    - `@` = Command
 2. You can write out the names, common abbreviations are recognized
     
-    - ctrl, ctl, control = Control
-    - cmd, command = Command
-    - shift = Shift
-    - opt, alt, option = Option
+    - `ctrl`, `ctl`, `control` = Control
+    - `cmd`, `command` = Command
+    - `shift` = Shift
+    - `opt`, `alt`, `option` = Option
 
 3. When using symbols, no separation between characters is needed: `{% kbd @$H %}`
 4. When using names, separate with either hyphen or space: `{% kbd cmd-shift-h %}` or `{% cmd shift h %}`
@@ -96,3 +96,7 @@ In `_config.yml`, include a `kbd` section to determine formatting.
         # with `+`. This looks like ⌘+⌥+C. Disable this to just output ⌘⌥C. 
         # Ignored if not using modifier symbols.
         use_plus_sign: true
+
+With all symbols set to true and `use_plus_sign` disabled, output looks like this (using my default styling):
+
+![](symbolsonly.png)
