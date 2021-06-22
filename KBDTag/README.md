@@ -32,6 +32,10 @@ If the key is a symbol, a class of `symbol` is applied to the `<kbd>` tag.
 
 If the keys are separated by `-` or `+` (depending on settings), a class of `separated` is applied to the containing `<span>`. If there's no separator, the class `combined` is applied.
 
+## Styling
+
+See `sass/kbd.scss` for the styling I use on my own sites, and modify it to suit your needs. It handles `Command-P` with different styling than `⌘P`, and should adapt to whatever output settings you use.
+
 ## Liquid Tag
 
 The tag is just `{% kbd [your key combo] %}`. The key combo syntax is very flexible:

@@ -1,0 +1,44 @@
+// Example styling for kbd tags
+$gray00: #000;
+$gray01: #2e3440;
+$gray70: #d8dee9;
+$gray80: #e5e9f0;
+$gray90: #eceff4;
+$gray100: lighten($gray90, 5%);
+
+// Keyboard Shortcuts
+.keycombo {
+  white-space: pre;
+
+  &.combined {
+    padding: 0 0 3px;
+    border-radius: 4px;
+    background: $gray90;
+    border: solid 1px $gray70;
+  }
+
+  kbd {
+    font-family: Avenir, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+
+    &.symbol {
+      background: lighten($gray90, 3%);
+      border-radius: 4px;
+      border: solid 1px $gray80;
+      // box-shadow: inset -1px -1px 0 transparentize($gray00, .8), inset 2px 2px 1px $gray100;
+      color: $gray04;
+      display: inline-block;
+      font-size: .85em;
+      line-height: 1.4;
+      margin: 0;
+      min-width: 2.4ch;
+      padding: 0 2px;
+      text-align: center;
+
+      &.key {
+        background: $gray100;
+        color: $gray01;
+      }
+    }
+  }
+}
