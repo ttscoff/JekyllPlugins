@@ -1,0 +1,43 @@
+/* Ocean by Chris Kempson (http://chriskempson.com) */
+
+$base01 : #2b303b !default; // Default Background
+$base02 : #343d46 !default; // Lighter Background (Used for status bars)
+$base03 : #4f5b66 !default; // Selection Background
+$base04 : #65737e !default; // Comments, Invisibles, Line Highlighting
+$base05 : #a7adba !default; // Dark Foreground (Used for status bars)
+$base06 : #c0c5ce !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #dfe1e8 !default; // Light Foreground (Not often used)
+$base08 : #eff1f5 !default; // Light Background (Not often used)
+$base09 : #bf616a !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #d08770 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #ebcb8b !default; // Classes, Markup Bold, Search Text Background
+$base12 : #a3be8c !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #96b5b4 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #8fa1b3 !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #b48ead !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #ab7967 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+/* Monokai by Wimer Hazenberg (http://www.monokai.nl) */
+
+$base01 : #272822 !default; // Default Background
+$base02 : #383830 !default; // Lighter Background (Used for status bars)
+$base03 : #49483e !default; // Selection Background
+$base04 : #75715e !default; // Comments, Invisibles, Line Highlighting
+$base05 : #a59f85 !default; // Dark Foreground (Used for status bars)
+$base06 : #f8f8f2 !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #f5f4f1 !default; // Light Foreground (Not often used)
+$base08 : #f9f8f5 !default; // Light Background (Not often used)
+$base09 : #f92672 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #fd971f !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #f4bf75 !default; // Classes, Markup Bold, Search Text Background
+$base12 : #a6e22e !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #a1efe4 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #66d9ef !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #ae81ff !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #cc6633 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

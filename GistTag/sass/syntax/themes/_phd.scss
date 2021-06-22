@@ -1,0 +1,43 @@
+/* PhD by Hennig Hasemann (http://leetless.de/vim.html) */
+
+$base01 : #061229 !default; // Default Background
+$base02 : #2a3448 !default; // Lighter Background (Used for status bars)
+$base03 : #4d5666 !default; // Selection Background
+$base04 : #717885 !default; // Comments, Invisibles, Line Highlighting
+$base05 : #9a99a3 !default; // Dark Foreground (Used for status bars)
+$base06 : #b8bbc2 !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #dbdde0 !default; // Light Foreground (Not often used)
+$base08 : #ffffff !default; // Light Background (Not often used)
+$base09 : #d07346 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #f0a000 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #fbd461 !default; // Classes, Markup Bold, Search Text Background
+$base12 : #99bf52 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #72b9bf !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #5299bf !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #9989cc !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #b08060 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

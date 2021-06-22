@@ -1,0 +1,43 @@
+/* Material Palenight by Nate Peterson */
+
+$base01 : #292D3E !default; // Default Background
+$base02 : #444267 !default; // Lighter Background (Used for status bars)
+$base03 : #32374D !default; // Selection Background
+$base04 : #676E95 !default; // Comments, Invisibles, Line Highlighting
+$base05 : #8796B0 !default; // Dark Foreground (Used for status bars)
+$base06 : #959DCB !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #959DCB !default; // Light Foreground (Not often used)
+$base08 : #FFFFFF !default; // Light Background (Not often used)
+$base09 : #F07178 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #F78C6C !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #FFCB6B !default; // Classes, Markup Bold, Search Text Background
+$base12 : #C3E88D !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #89DDFF !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #82AAFF !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #C792EA !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #FF5370 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

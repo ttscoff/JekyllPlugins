@@ -1,0 +1,43 @@
+/* Outrun Dark by Hugo Delahousse (http://github.com/hugodelahousse/) */
+
+$base01 : #00002A !default; // Default Background
+$base02 : #20204A !default; // Lighter Background (Used for status bars)
+$base03 : #30305A !default; // Selection Background
+$base04 : #50507A !default; // Comments, Invisibles, Line Highlighting
+$base05 : #B0B0DA !default; // Dark Foreground (Used for status bars)
+$base06 : #D0D0FA !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #E0E0FF !default; // Light Foreground (Not often used)
+$base08 : #F5F5FF !default; // Light Background (Not often used)
+$base09 : #FF4242 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #FC8D28 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #F3E877 !default; // Classes, Markup Bold, Search Text Background
+$base12 : #59F176 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #0EF0F0 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #66B0FF !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #F10596 !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #F003EF !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

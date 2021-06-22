@@ -1,0 +1,25 @@
+$base01 : #ffffff !default;
+$base02 : #fafafa !default;
+$base03 : #eeeeee !default;
+$base04 : #e5e5e5 !default;
+$base05 : #333333 !default;
+$base06 : #383a42 !default;
+$base07 : #4f525e !default;
+$base08 : rgb(73, 80, 87) !default;
+$base09 : #e5c07b !default;
+$base10 : #c18401 !default;
+$base11 : #e06c75 !default;
+$base12 : #a626a4 !default;
+$base13 : #c678dd !default;
+$base14 : #0184bc !default;
+$base15 : #0997b3 !default;
+$base16 : #98c379 !default;
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;

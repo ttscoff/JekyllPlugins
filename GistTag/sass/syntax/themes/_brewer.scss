@@ -1,0 +1,43 @@
+/* Brewer by Timothée Poisot (http://github.com/tpoisot) */
+
+$base01 : #0c0d0e !default; // Default Background
+$base02 : #2e2f30 !default; // Lighter Background (Used for status bars)
+$base03 : #515253 !default; // Selection Background
+$base04 : #737475 !default; // Comments, Invisibles, Line Highlighting
+$base05 : #959697 !default; // Dark Foreground (Used for status bars)
+$base06 : #b7b8b9 !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #dadbdc !default; // Light Foreground (Not often used)
+$base08 : #fcfdfe !default; // Light Background (Not often used)
+$base09 : #e31a1c !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #e6550d !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #dca060 !default; // Classes, Markup Bold, Search Text Background
+$base12 : #31a354 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #80b1d3 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #3182bd !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #756bb1 !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #b15928 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

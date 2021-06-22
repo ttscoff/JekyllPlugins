@@ -1,0 +1,52 @@
+$base01 : #002b36 !default; //darkest blue
+$base02 : #073642 !default; //dark blue
+$base03 : #586e75 !default; //darkest gray
+$base04 : #657b83 !default; //dark gray
+$base05 : #839496 !default; //medium gray
+$base06 : #93a1a1 !default; //medium light gray
+$base07 : #eee8d5 !default; //cream
+$base08 : #fdf6e3 !default; //white
+$base09 : #b58900 !default;
+$base10 : #cb4b16 !default;
+$base11 : #dc322f !default;
+$base12 : #d33682 !default;
+$base13 : #6c71c4 !default;
+$base14 : #268bd2 !default;
+$base15 : #2aa198 !default;
+$base16 : #859900 !default;
+
+$solarized: light !default;
+
+@if $solarized == light {
+
+  $_base03: $base03;
+  $_base02: $base02;
+  $_base01: $base01;
+  $_base00: $base00;
+  $_base0:  $base0;
+  $_base1:  $base1;
+  $_base2:  $base2;
+  $_base3:  $base3;
+
+  $base03:  $_base3 !global;
+  $base02:  $_base2 !global;
+  $base01:  $_base1 !global;
+  $base00:  $_base0 !global;
+  $base0:   $_base00 !global;
+  $base1:   $_base01 !global;
+  $base2:   $_base02 !global;
+  $base3:   $_base03 !global;
+}
+
+/* non highlighted code colors */
+$pre-bg: $base03 !default;
+$pre-border: darken($base02, 5) !default;
+$pre-color: $base1 !default;
+$lineno: $base1;
+$lineno-bg: $base02;
+$lineno-hi: $base3;
+$lineno-hi-bg: $lineno-bg;
+
+.gist .gist-file .gist-data .line-numbers {
+  font-size: 13px!important;
+}

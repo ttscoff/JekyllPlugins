@@ -1,0 +1,43 @@
+/* Atelier Lakeside by Bram de Haan (http://atelierbramdehaan.nl) */
+
+$base01 : #161b1d !default; // Default Background
+$base02 : #1f292e !default; // Lighter Background (Used for status bars)
+$base03 : #516d7b !default; // Selection Background
+$base04 : #5a7b8c !default; // Comments, Invisibles, Line Highlighting
+$base05 : #7195a8 !default; // Dark Foreground (Used for status bars)
+$base06 : #7ea2b4 !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #c1e4f6 !default; // Light Foreground (Not often used)
+$base08 : #ebf8ff !default; // Light Background (Not often used)
+$base09 : #d22d72 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #935c25 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #8a8a0f !default; // Classes, Markup Bold, Search Text Background
+$base12 : #568c3b !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #2d8f6f !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #257fad !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #6b6bb8 !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #b72dd2 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

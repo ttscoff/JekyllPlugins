@@ -1,0 +1,43 @@
+/* Railscasts by Ryan Bates (http://railscasts.com) */
+
+$base01 : #2b2b2b !default; // Default Background
+$base02 : #272935 !default; // Lighter Background (Used for status bars)
+$base03 : #3a4055 !default; // Selection Background
+$base04 : #5a647e !default; // Comments, Invisibles, Line Highlighting
+$base05 : #d4cfc9 !default; // Dark Foreground (Used for status bars)
+$base06 : #e6e1dc !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #f4f1ed !default; // Light Foreground (Not often used)
+$base08 : #f9f7f3 !default; // Light Background (Not often used)
+$base09 : #da4939 !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #cc7833 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #ffc66d !default; // Classes, Markup Bold, Search Text Background
+$base12 : #a5c261 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #519f50 !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #6d9cbe !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #b6b3eb !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #bc9458 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,43 @@
+/* Darktooth by Jason Milkins (https://github.com/jasonm23) */
+
+$base01 : #1D2021 !default; // Default Background
+$base02 : #32302F !default; // Lighter Background (Used for status bars)
+$base03 : #504945 !default; // Selection Background
+$base04 : #665C54 !default; // Comments, Invisibles, Line Highlighting
+$base05 : #928374 !default; // Dark Foreground (Used for status bars)
+$base06 : #A89984 !default; // Default Foreground, Caret, Delimiters, Operators
+$base07 : #D5C4A1 !default; // Light Foreground (Not often used)
+$base08 : #FDF4C1 !default; // Light Background (Not often used)
+$base09 : #FB543F !default; // Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+$base10 : #FE8625 !default; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$base11 : #FAC03B !default; // Classes, Markup Bold, Search Text Background
+$base12 : #95C085 !default; // Strings, Inherited Class, Markup Code, Diff Inserted
+$base13 : #8BA59B !default; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$base14 : #0D6678 !default; // Functions, Methods, Attribute IDs, Headings
+$base15 : #8F4673 !default; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+$base16 : #A87322 !default; // Deprecated, Opening/Closing Embedded Language Tags, e.g. <?
+
+/* non highlighted code colors */
+$pre-bg       : $base01 !default;
+$pre-border   : lighten($base01, 10) !default;
+$pre-color    : $base07 !default;
+$lineno       : $base06 !default;
+$lineno-bg    : $base02 !default;
+$lineno-hi    : $base08 !default;
+$lineno-hi-bg : $lineno-bg !default;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
