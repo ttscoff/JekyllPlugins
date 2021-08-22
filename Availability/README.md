@@ -14,15 +14,30 @@ When I add a new feature to the beta, this plugin allows me to include its docum
 
 If you want to use only "beta" or "upcoming" with a single build number, a little modification will be required, but it shouldn't be too hard to decipher where the changes are needed.
 
+The Sparkle appcasts are checked for the current build number the first time the plugin is called when the Jekyll builds the site. The plugin caches the result in the Jekyll site config object, so all subsequent calls to the plugin have the value available for that build without having to parse the appcast each time.
+
 ## Configuration
 
-All configuration happens in the site's `_config.yml`.
+All configuration/customization happens in the site's `_config.yml`.
 
-Appcast paths should be to local files. The plugin could be modified to pull in an appcast URL from the web, but I'll leave that up to you.
+Appcast paths are required should be paths to local files. The plugin could be modified to pull in an appcast URL from the web, but I'll leave that up to you.
 
-Templates are ERB format. `<%= content =>` gets block tag contents, `<%= min_version =>` gets the build number. If you want to use the default template(s) for any type, leave the key(s) out entirely.
+In _config.yml:
 
-Templates can use Markdown or HTML (or both). Multiple lines should probably use a `|+` YAML block scalar, which will keep newlines and not chomp whitespace.
+```yaml
+availability:
+  appcast:
+    release: /path/to/appcast.xml
+    beta: /path/to/beta/appcast.xml
+```
+
+### Template Customization
+
+Templates are defined in ERB format. `<%= content =>` gets block tag contents, `<%= min_version =>` gets the build number. If you want to use the default template(s) for any type, leave the key(s) out entirely.
+
+Templates can use Markdown or HTML (or both). Multiple lines should probably use a `|+` YAML block scalar, which will preserve newlines and not chomp trailing whitespace. Note that if you use HTML block tags like `div` or `aside` (as the default templates do), you'll need to include the attribute `markdown=1` in the opening tag to ensure that Markdown inside it is rendered properly.
+
+Templates can be defined for both "beta" and "upcoming" output, including any of: single (inline) tag formatting used when the block tag contents have no line breaks, multi-line (block) formatting, and the one-off notification alert.
 
 In _config.yml:
 
@@ -51,14 +66,14 @@ availability:
     beta: ~/Code/Bunch/beta-updates/appcast.xml
   templates:
     beta:
-      inline: <i class="betafeature"><span title="The following feature is only available in the Bunch Beta (build <%=min_version%>)" class="notification">(Beta only)</span> <%=content%></i>
+      inline: <i class="betafeature"><span title="The following feature is only available in the Bunch Beta (build <%= min_version %>)" class="notification">(Beta only)</span> <%= content %></i>
       block: |+
         <div class="betafeature" markdown=1>
 
-        > ___Beta Feature___: this feature is currently in development and is only available to those using Bunch Beta. If you want to help test new features, feel free to [download and run the beta release](/download/).
+        > ___Beta Feature___: this feature is currently in development and is only available to those using Bunch Beta (build <%= min_version %>). If you want to help test new features, feel free to [download and run the beta release](/download/).
         {:.alert}
 
-        <%=content%>
+        <%= content %>
 
         </div>
 ```
