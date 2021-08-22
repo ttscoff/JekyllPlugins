@@ -166,9 +166,17 @@ Styles are included for the markup inserted into the automatic table of contents
 ![Tag in table of contents](docs/availability_toc.jpg)
 
 ```scss
+@function bgify($color, $desat: 10%, $lighten: 30%) {
+  @return lighten(desaturate($color, $desat), $lighten);
+}
+
+@function intensify($color, $sat: 10%, $darken: 5%) {
+  @return darken(saturate($color, $sat), $darken);
+}
+
 $color-pop-yellow: #eccc87;
 $color-alert-bg: bgify($color-pop-yellow, 20%, 25%);
-$color-alert-border: $color-pop-yellow;
+$color-alert-border: intensify($color-pop-yellow, 2%, 2%);
 
 blockquote {
   border-left: .5em solid;
@@ -228,7 +236,7 @@ h4 {
 
 div.betafeature {
   background: $color-alert-bg;
-  border-radius: 8px;
+  border-radius: 4px;
   border: solid 2px $color-alert-border;
   left: -.6em;
   padding: 0 .5em;
