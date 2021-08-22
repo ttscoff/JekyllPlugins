@@ -12,37 +12,56 @@ When I add a new feature to the beta, this plugin allows me to include its docum
 - If it's greater than the stable release and less than or equal to the current beta build, the tag content is considered "beta."
 - If it's greater than the current beta build, the tag content is considered "upcoming."
 
+If you want to use only "beta" or "upcoming" with a single build number, a little modification will be required, but it shouldn't be too hard to decipher where the changes are needed.
+
 ## Configuration
+
+All configuration happens in the site's `_config.yml`.
 
 Appcast paths should be to local files. The plugin could be modified to pull in an appcast URL from the web, but I'll leave that up to you.
 
-Templates are ERB format. `<%= content =>` gets block tag contents, `<%= min_version =>` gets the build number. If you want to use the default templates, leave the key(s) out.
+Templates are ERB format. `<%= content =>` gets block tag contents, `<%= min_version =>` gets the build number. If you want to use the default template(s) for any type, leave the key(s) out entirely.
 
-Templates can use Markdown or HTML (or both).
+Templates can use Markdown or HTML (or both). Multiple lines should probably use a `|+` YAML block scalar, which will keep newlines and not chomp whitespace.
 
 In _config.yml:
 
-    availability:
-      appcast:
-        release: /path/to/appcast.xml
-        beta: /path/to/appcast.xml
-      templates:
-        beta:
-          inline: <i class="betafeature"><span title="The following feature is only available in the preview build (build <%=min_version%>)" class="notification">(Beta only)</span> <%=content%></i>
-          block: |+
-            <div class="betafeature" markdown=1>
+```yaml
+availability:
+  appcast:
+    release: /path/to/appcast.xml
+    beta: /path/to/appcast.xml
+  templates:
+    beta:
+      inline: [ERB TEMPLATE]
+      block: [ERB TEMPLATE]
+      notification: [ERB TEMPLATE]
+    upcoming:
+      inline: [ERB TEMPLATE]
+      block: [ERB TEMPLATE]
+      notification: [ERB TEMPLATE]
+```
 
-            > ___Beta Feature___: this feature is currently in development and is only available to those using the preview build. If you want to help test new features, feel free to [download and run the beta release](/download/).
-            {:.alert}
+### Example Template Config
 
-            <%=content%>
+```yaml
+availability:
+  appcast:
+    release: ~/Code/Bunch/updates/appcast.xml
+    beta: ~/Code/Bunch/beta-updates/appcast.xml
+  templates:
+    beta:
+      inline: <i class="betafeature"><span title="The following feature is only available in the Bunch Beta (build <%=min_version%>)" class="notification">(Beta only)</span> <%=content%></i>
+      block: |+
+        <div class="betafeature" markdown=1>
 
-            </div>
-          notification: ...
-        upcoming:
-          inline: ...
-          block: ...
-          notification: ...
+        > ___Beta Feature___: this feature is currently in development and is only available to those using Bunch Beta. If you want to help test new features, feel free to [download and run the beta release](/download/).
+        {:.alert}
+
+        <%=content%>
+
+        </div>
+```
 
 See the end of this README for some example styling.
 
@@ -68,15 +87,15 @@ If the first text in a multi-line block is a level 2 or higher header and the fe
     Description
     {% endavailable %}
 
-If the current version's build number is less than 193, this
+If the public version's build number is less than 193, this
 outputs:
 
     <div class="betafeature" markdown=1>
 
     > ___Beta Feature___: this feature is currently in
     development and is only available to those using
-    Bunch Beta. If you want to help test new features,
-    feel free to [download the beta](/download).
+    the preview release. If you want to help test new 
+    features, feel free to [download the beta](/download).
     {:.alert}
 
     ## Brand New Feature <span class="tag">(Beta)</span>
