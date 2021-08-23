@@ -198,7 +198,8 @@ module Jekyll
     end
 
     def append_header(content, text)
-      content.strip.sub(/^(\s*)(?<=\n|\A)(\#{2,})([\s\S]*?)( \{#[\s\S]*?\})?(?= *\n)/is, %(\\1\\2 \\3 <span class="tag">(#{text})</span>\\4))
+      content.force_encoding('utf-8')
+      content.strip.sub(/(?i-m)^(\s*)(?<=\n|\A)(\#{2,})([\s\S]*?)( \{#[\s\S]*?\})?(?= *\n)/, %(\\1\\2 \\3 <span class="tag">(#{text})</span>\\4))
     end
   end
 
