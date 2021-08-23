@@ -186,11 +186,11 @@ module Jekyll
     end
 
     def get_sparkle_build(url)
+      return url if url.to_s =~ /^[0-9.]+$/
       xml = IO.read(File.expand_path(url))
       doc = Nokogiri::Slop(xml)
       enclosure = doc.root.channel.item.last.enclosure
-      build = enclosure["sparkle:version"].to_i
-      return build
+      enclosure["sparkle:version"].to_s
     end
 
     def render_markdown(input)
@@ -206,7 +206,7 @@ module Jekyll
     include FeatureTagHelpers
 
     def initialize(tag_name, markup, tokens)
-      @min_version = markup.strip.to_i
+      @min_version = markup.strip.to_s
       super
     end
 
@@ -233,8 +233,8 @@ module Jekyll
       end
 
       min_version = @min_version
-      if @min_version > release_version
-        if @min_version > beta_version
+      if @min_version > release_version.to_s
+        if @min_version > beta_version.to_s
           if multiline
             content = append_header(content, "Upcoming")
             template = ERB.new(templates['upcoming']['block'])
@@ -265,7 +265,7 @@ module Jekyll
     include FeatureTagHelpers
 
     def initialize(tag_name, markup, tokens)
-      @min_version = markup.to_i
+      @min_version = markup.to_s
       super
     end
 
@@ -290,8 +290,8 @@ module Jekyll
 
       min_version = @min_version
 
-      if @min_version > release_version
-        if @min_version > beta_version
+      if @min_version > release_version.to_s
+        if @min_version > beta_version.to_s
           template = ERB.new(templates['upcoming']['notification'])
         else
           template = ERB.new(templates['beta']['notification'])

@@ -31,6 +31,10 @@ availability:
     beta: /path/to/beta/appcast.xml
 ```
 
+You can optionally hardcode build numbers instead of file paths. Build numbers can be integers or any string containing only numbers and periods (so date-based build numbers like '2021.08.25.23562' will also work).
+
+If you don't have a separate beta build, you can either set the beta path to a very large number to have everything higher than the release build marked as beta, or set beta to the same path as the release build and have everything higher than release marked as upcoming/unreleased.
+
 ### Template Customization
 
 Templates are defined in ERB format. `<%= content =>` gets block tag contents, `<%= min_version =>` gets the build number. If you want to use the default template(s) for any type, leave the key(s) out entirely.
@@ -45,7 +49,7 @@ In _config.yml:
 availability:
   appcast:
     release: /path/to/appcast.xml
-    beta: /path/to/appcast.xml
+    beta: /path/to/beta/appcast.xml
   templates:
     beta:
       inline: [ERB TEMPLATE]
@@ -76,6 +80,21 @@ availability:
         <%= content %>
 
         </div>
+```
+
+### Removing Unreleased Features From Output
+
+If you'd prefer to just have the plugin remove unreleased features from the output instead of marking them up, simply set the templates to empty strings. Sections marked with a build number greater than the public release or beta will be removed from output, including from table of contents generation.
+
+The following would use default templates for beta features, but remove unreleased features from the rendered output until the build number catches up with them. Replicate this for the beta templates to remove all features marked with higher build numbers than the release.
+
+```yaml
+availability:
+  templates:
+    upcoming:
+      inline: ''
+      block: ''
+      notification: ''
 ```
 
 See the end of this README for some example styling.
