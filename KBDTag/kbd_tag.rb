@@ -175,13 +175,13 @@ class String
         ['Fwd Del', '&#8998;', 'Forward Delete (Fn Delete)']
       when /^(esc(ape)?)$/
         ['Esc', '&#9099;', 'Escape Key']
-      when /^right?$/
+      when /^(right|rt)$/
         ['Right Arrow', '&#8594;', 'Right Arrow Key']
-      when /^left$/
+      when /^(left|lt)$/
         ['Left Arrow', '&#8592;', 'Left Arrow Key']
-      when /^up?$/
+      when /^up$/
         ['Up Arrow', '&#8593;', 'Up Arrow Key']
-      when /^down$/
+      when /^(down|dn)$/
         ['Down Arrow', '&#8595;', 'Down Arrow Key']
       when /^pgup$/
         ['PgUp', '&#8670;', 'Page Up Key']
