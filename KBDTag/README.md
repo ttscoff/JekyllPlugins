@@ -38,7 +38,7 @@ In `_config.yml`, include a `kbd` section to determine formatting.
         # to enable them. Ignored if not using modifier symbols.
         use_plus_sign: false
 
-With all symbols set to true and `use_plus_sign` disabled, output looks like this (using my default styling):
+With all symbols set to true and `use_plus_sign` set to false, output looks like this (using my default styling):
 
 ![](symbolsonly.png)
 
