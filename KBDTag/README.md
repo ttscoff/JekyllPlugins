@@ -80,7 +80,7 @@ Most of the rules from the keyboard modifier section of [Apple's style guide](ht
 
 * Sorts modifiers by Apple's menu display order (Control, Option, Shift, Command). You can write them in any order and output will be correct
 * When not using symbols, keys are separated with `-`, e.g. "Shift-Command-?"
-* When using symbols, keys are separated with `+` (separator can be disabled entirely in settings), e.g. "⌘+⌥+?"
+* When using symbols, keys are not separated by default. If your CSS styling makes keys display as literal keyboard keys, you should use a plus symbol to separate them, which can be enabled with `use_plus_sign: true`.
 * When no modifiers are present, shift is applied to uppercase keys ("F" = "Shift-F", "f" = "F")
 * When shift modifier is used, keys using lower of 2-symbol keys switches to upper ("Shift-/" => "Shift-?")
 
