@@ -33,7 +33,8 @@ In `_config.yml`, include a `kbd` section to determine formatting.
         # unfamiliar to users, like Home (↖) or Escape (⎋). Your choice.
         use_key_symbols: true
 
-        # By default, key combinations are output like ⌘⌥C. When using graphical representations for modifiers (via CSS), Apple recommends 
+        # By default, key combinations are output like ⌘⌥C. When using
+        # graphical representations for modifiers (via CSS), Apple recommends 
         # separating them with `+`, e.g. `⌘+⌥+C`. Set use_plus_sign to true 
         # to enable them. Ignored if not using modifier symbols.
         use_plus_sign: false
