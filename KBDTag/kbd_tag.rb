@@ -1,4 +1,4 @@
-# Title: Keyboard markup tag
+p# Title: Keyboard markup tag
 # Author: Brett Terpstra <https://brettterpstra.com>
 # Description: Apply HTML markup for keyboard shortcuts
 #
@@ -9,7 +9,7 @@
 #   kbd:
 #     use_modifier_symbols: true
 #     use_key_symbols: true
-#     use_plus_sign: true
+#     use_plus_sign: false
 #
 # example:
 #
@@ -252,9 +252,9 @@ module Jekyll
 
     def render(context)
       config = context.registers[:site].config
-      use_key_symbol = config['kbd']['use_key_symbols'] rescue true
-      use_mod_symbol = config['kbd']['use_modifier_symbols'] rescue true
-      use_plus = config['kbd']['use_plus_sign'] rescue true
+      use_key_symbol = config['kbd']['use_key_symbols'] || true
+      use_mod_symbol = config['kbd']['use_modifier_symbols'] || true
+      use_plus = config['kbd']['use_plus_sign'] || false
 
       output = []
 
