@@ -71,9 +71,9 @@ module Jekyll
           end
 
           # check for png or jpeg poster images with same basename
-          if File.exists?(File.join(base, base_img + '.png'))
+          if File.exist?(File.join(base, base_img + '.png'))
             @poster = base_img + '.png'
-          elsif File.exists?(File.join(base, base_img + '.jpg'))
+          elsif File.exist?(File.join(base, base_img + '.jpg'))
             @poster = base_img + '.jpg'
           else
             # No existing poster image found
@@ -89,10 +89,10 @@ module Jekyll
             end
           end
         else
-          if File.exists?( File.join(base, base_img + '.gif') )
+          if File.exist?( File.join(base, base_img + '.gif') )
             @poster = img_path
             @img = base_img + '.gif'
-          elsif File.exists?( File.join(base, base_img + '.mp4') )
+          elsif File.exist?( File.join(base, base_img + '.mp4') )
             @poster = img_path
             @img = base_img + '.mp4'
           else
