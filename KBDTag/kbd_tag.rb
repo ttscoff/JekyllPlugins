@@ -4,14 +4,18 @@
 #
 # See Readme for syntax help and configuration details.
 #
-# Configuration options:
+# Configuration example in _config.yml:
 #
 #   kbd:
 #     use_modifier_symbols: true
 #     use_key_symbols: true
 #     use_plus_sign: false
 #
-# example:
+# There are no defaults, but you must define these keys in your _config.yml or you'll get an error
+# when you use this plugin.
+#
+#
+# Usage example:
 #
 # Input:
 #
@@ -256,9 +260,9 @@ module Jekyll
 
     def render(context)
       config = context.registers[:site].config
-      use_key_symbol = config['kbd']['use_key_symbols'] || true
-      use_mod_symbol = config['kbd']['use_modifier_symbols'] || true
-      use_plus = config['kbd']['use_plus_sign'] || false
+      use_key_symbol = config['kbd']['use_key_symbols']
+      use_mod_symbol = config['kbd']['use_modifier_symbols']
+      use_plus = config['kbd']['use_plus_sign']
 
       output = []
 
