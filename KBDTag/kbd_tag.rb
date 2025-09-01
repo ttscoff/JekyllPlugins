@@ -1,4 +1,4 @@
-p# Title: Keyboard markup tag
+# Title: Keyboard markup tag
 # Author: Brett Terpstra <https://brettterpstra.com>
 # Description: Apply HTML markup for keyboard shortcuts
 #
