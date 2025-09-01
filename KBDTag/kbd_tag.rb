@@ -191,6 +191,10 @@ class String
         ['Home', '&#8598;', 'Home Key']
       when /^end$/
         ['End', '&#8600;', 'End Key']
+      when /^numlock$/
+        ['Num Lock', '&#8685;', "Num Lock Key"]
+      when /^clear$/
+        ['Clear', '&#2327;', 'Clear Key']
       when /^click$/
         ['click', '<i class="fas fa-mouse-pointer"></i>', 'left click']
       else
