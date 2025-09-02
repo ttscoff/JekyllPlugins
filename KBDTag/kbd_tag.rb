@@ -1,17 +1,21 @@
-p# Title: Keyboard markup tag
+# Title: Keyboard markup tag
 # Author: Brett Terpstra <https://brettterpstra.com>
 # Description: Apply HTML markup for keyboard shortcuts
 #
 # See Readme for syntax help and configuration details.
 #
-# Configuration options:
+# Configuration example in _config.yml:
 #
 #   kbd:
 #     use_modifier_symbols: true
 #     use_key_symbols: true
 #     use_plus_sign: false
 #
-# example:
+# There are no defaults, but you must define these keys in your _config.yml or you'll get an error
+# when you use this plugin.
+#
+#
+# Usage example:
 #
 # Input:
 #
@@ -191,6 +195,10 @@ class String
         ['Home', '&#8598;', 'Home Key']
       when /^end$/
         ['End', '&#8600;', 'End Key']
+      when /^numlock$/
+        ['Num Lock', '&#8685;', "Num Lock Key"]
+      when /^clear$/
+        ['Clear', '&#2327;', 'Clear Key']
       when /^click$/
         ['click', '<i class="fas fa-mouse-pointer"></i>', 'left click']
       else
@@ -252,9 +260,9 @@ module Jekyll
 
     def render(context)
       config = context.registers[:site].config
-      use_key_symbol = config['kbd']['use_key_symbols'] || true
-      use_mod_symbol = config['kbd']['use_modifier_symbols'] || true
-      use_plus = config['kbd']['use_plus_sign'] || false
+      use_key_symbol = config['kbd']['use_key_symbols']
+      use_mod_symbol = config['kbd']['use_modifier_symbols']
+      use_plus = config['kbd']['use_plus_sign']
 
       output = []
 
