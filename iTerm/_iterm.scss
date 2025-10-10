@@ -1,0 +1,92 @@
+// _sass/_iterm.scss
+// Styles for the iterm Liquid tag output.
+
+.iterm-command {
+  margin: 1rem 0;
+  font-family: var(
+    --code-font,
+    "SFMono-Regular",
+    Menlo,
+    Monaco,
+    "Roboto Mono",
+    "Courier New",
+    monospace
+  );
+  display: block;
+  /* When the pre is inside this container, allow absolute positioning of the button */
+  position: relative;
+}
+
+.iterm-command pre {
+  margin: 0 0 0.5rem 0;
+  padding: 0.6rem 0.8rem;
+  background: #0f1720; // dark background for code
+  color: #e6eef3;
+  border-radius: 6px;
+  overflow: auto;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4) inset;
+}
+
+.iterm-command code {
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  white-space: pre-wrap;
+}
+
+.iterm-run-button {
+  display: inline-block;
+  text-decoration: none;
+  background: #1781a8;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  transition: background-color 120ms ease-in-out, transform 80ms ease;
+}
+
+.iterm-run-button:hover {
+  background: #0f6a88;
+  transform: translateY(-1px);
+}
+
+// Small utility when the command label should be tiny
+.iterm-command .iterm-run-button {
+  vertical-align: middle;
+}
+
+/* --- Overlap behaviour for fenced code (fenced pre emitted BEFORE .iterm-command) --- */
+/* Add bottom padding to code blocks so the overlapping button doesn't cover content */
+pre,
+.highlighter-rouge {
+  padding-bottom: 1.4rem;
+}
+
+/* When the .iterm-command follows a code block, pull it upward so the button overlaps */
+pre + .iterm-command,
+.highlighter-rouge + .iterm-command {
+  margin-top: -2rem; /* overlap the bottom of the code block */
+  margin-bottom: 1rem; /* space after the button */
+  text-align: right; /* right-align the button */
+}
+
+/* Lift the button slightly so it visually sits on the code block edge */
+.iterm-run-button {
+  transform: translateY(-6px);
+}
+
+.iterm-run-button:hover {
+  transform: translateY(-7px);
+}
+
+/* --- Backwards compatibility: button inside .iterm-command with pre inside --- */
+.iterm-command > .iterm-run-button {
+  /* position absolute in this case to overlap the inner pre */
+  position: absolute;
+  right: 0.6rem;
+  bottom: -8px;
+  transform: none;
+}
