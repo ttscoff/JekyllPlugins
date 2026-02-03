@@ -109,8 +109,9 @@ module Jekyll
       return '' if @name.empty?
 
       json_url = if @name.start_with?('/')
-                   site_url = (context.registers[:site].config['url'] || '').to_s.strip.chomp('/')
-                   "#{site_url}#{@name}"
+                   site = context.registers[:site].config
+                   base = [(site['url'] || '').to_s.strip, (site['baseurl'] || '').to_s.strip].join.chomp('/')
+                   "#{base}#{@name}"
                  else
                    base = (context.registers[:site].config['biner'] || {}).fetch('base_directory',
                                                                                  DEFAULT_BASE_URL).to_s.strip
