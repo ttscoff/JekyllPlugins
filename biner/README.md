@@ -64,8 +64,22 @@ The tag generates a split button:
 
 - **Main button:** Opens Karabiner-Elements import dialog for the JSON
 - **Dropdown:**
-  - Show JSON (opens the JSON file)
+  - Show JSON (opens the JSON file in a modal)
   - Copy JSON URL (copies the URL to clipboard)
+
+With the CSS below added to your site, you can get a button similar to:
+
+![](biner-button.jpg)
+
+With a dropdown like:
+
+![](biner-dropdown.jpg)
+
+And clicking "Show JSON" reveals a modal:
+
+![](biner-view-json.jpg)
+
+with download and copy buttons.
 
 ## Suggested CSS
 
