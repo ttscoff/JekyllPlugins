@@ -1,0 +1,73 @@
+.biner-wrap {
+  position: relative;
+  display: inline-block;
+}
+.biner-btn-group {
+  display: inline-flex;
+  align-items: stretch;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+.biner-btn-main {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: #007aff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.biner-btn-main:hover {
+  background: #0056b3;
+  color: #fff;
+}
+.biner-btn-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  background: #007aff;
+  border: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  cursor: pointer;
+}
+.biner-btn-dropdown-toggle:hover {
+  background: #0056b3;
+}
+.biner-chevron {
+  font-size: 10px;
+  line-height: 1;
+}
+.biner-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  min-width: 160px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 4px 0;
+  z-index: 100;
+}
+.biner-dropdown-menu[hidden] {
+  display: none !important;
+}
+.biner-dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+.biner-dropdown-item:hover {
+  background: #f5f5f5;
+}
