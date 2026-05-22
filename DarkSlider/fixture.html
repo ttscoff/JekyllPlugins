@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dark slider fixture</title>
+  <link rel="stylesheet" href="dark-slider.css">
+</head>
+<body style="max-width: 640px; margin: 2em auto; font-family: system-ui, sans-serif;">
+  <h1>Dark slider (standalone)</h1>
+  <p>Drag the handle. This demo starts at 25% (mostly dark).</p>
+  <figure class="dark-slider" style="--pos: 25%" data-dark-slider>
+    <div class="dark-slider__dark">
+      <img src="https://placehold.co/600x300/222/fff?text=Dark" alt="Dark mode" width="600" height="300">
+    </div>
+    <div class="dark-slider__light">
+      <img src="https://placehold.co/600x300/eee/333?text=Light" alt="Light mode" width="600" height="300">
+    </div>
+    <div class="dark-slider__handle" aria-hidden="true"></div>
+    <input type="range" class="dark-slider__range" min="0" max="100" value="25"
+      aria-label="Compare light and dark appearance">
+  </figure>
+  <script src="dark-slider.js"></script>
+</body>
+</html>

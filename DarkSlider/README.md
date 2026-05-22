@@ -1,5 +1,7 @@
 # Dark Slider — Jekyll light/dark image comparison
 
+**Version 1.0.1**
+
 Interactive before/after slider for posts and pages: drag a vertical handle to compare a **light** screenshot (left) with a **dark** screenshot (right).
 
 ![Dark Slider example](DarkSlider.jpg)
@@ -77,7 +79,21 @@ Omit a key to use the executable from your `PATH`.
 
 ## HTML output
 
-The tag emits a `figure.dark-slider` with layered `<picture>` elements (or `<img>` for remote URLs), a range input, and a `<noscript>` fallback showing the light image.
+The tag emits a `figure.dark-slider` with layered `<picture>` elements (or `<img>` for remote URLs), a range input, and a `<noscript>` fallback showing the light image when JavaScript is disabled.
+
+Both layers render at full width; the light side is revealed with CSS `clip-path` so it stays aligned with the dark image at any display size.
+
+## Changelog
+
+### 1.0.1
+
+- Fix light/dark images rendering at different scales (full-width layers + `clip-path` instead of a narrow overlay)
+- Emit standard `<picture>` markup (sources are not wrapped in `<noscript>`, which hid images when JS was enabled)
+- Simplify JavaScript (no per-pixel width sync; slider interaction unchanged)
+
+### 1.0.0
+
+- Initial release
 
 ## Files
 
@@ -87,6 +103,8 @@ The tag emits a `figure.dark-slider` with layered `<picture>` elements (or `<img
 | [dark-slider.css](./dark-slider.css) | Styles (required) |
 | [dark-slider.js](./dark-slider.js) | Interaction (required) |
 | [DarkSlider.jpg](./DarkSlider.jpg) | Example screenshot |
+| [fixture.html](./fixture.html) | Standalone browser test (no Jekyll) |
+| [VERSION](./VERSION) | Current release version |
 
 ## Author
 

@@ -19,6 +19,7 @@
 #   .webp / .avif            — optional; generated at build when tools exist
 #
 # Requires dark-slider.css and dark-slider.js in your site layout (no jQuery).
+# Version: 1.0.1
 #
 # Optional _config.yml (paths to binaries; omit to use PATH):
 #   dark_slider:

@@ -23,9 +23,12 @@ figure.dark-slider .dark-slider__dark {
 }
 
 figure.dark-slider .dark-slider__dark picture,
-figure.dark-slider .dark-slider__dark img {
+figure.dark-slider .dark-slider__dark img,
+figure.dark-slider .dark-slider__light picture,
+figure.dark-slider .dark-slider__light img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
   vertical-align: top;
 }
@@ -35,19 +38,11 @@ figure.dark-slider .dark-slider__light {
   top: 0;
   left: 0;
   z-index: 2;
-  width: var(--pos);
-  height: 100%;
+  width: 100%;
   overflow: hidden;
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  -webkit-clip-path: inset(0 calc(100% - var(--pos)) 0 0);
   pointer-events: none;
-}
-
-figure.dark-slider .dark-slider__light picture,
-figure.dark-slider .dark-slider__light img {
-  display: block;
-  max-width: none;
-  height: auto;
-  vertical-align: top;
-  /* width set by dark-slider.js to match figure (overlay clip is narrower) */
 }
 
 figure.dark-slider .dark-slider__handle {

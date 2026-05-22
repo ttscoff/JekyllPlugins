@@ -5,21 +5,8 @@
 (function (global) {
   "use strict";
 
-  var initialized = false;
-
   function clamp(n, min, max) {
     return Math.min(max, Math.max(min, n));
-  }
-
-  function syncLightMediaWidth(fig) {
-    var w = fig.offsetWidth;
-    if (!w) {
-      return;
-    }
-    var media = fig.querySelector(".dark-slider__light picture, .dark-slider__light img");
-    if (media) {
-      media.style.width = w + "px";
-    }
   }
 
   function setPosition(fig, pct) {
@@ -37,7 +24,9 @@
     if (!rect.width) {
       return 50;
     }
-    var x = (ev.clientX !== undefined ? ev.clientX : ev.touches[0].clientX) - rect.left;
+    var x =
+      (ev.clientX !== undefined ? ev.clientX : ev.touches[0].clientX) -
+      rect.left;
     return (x / rect.width) * 100;
   }
 
@@ -94,20 +83,11 @@
     global.addEventListener("touchend", onPointerUp);
     global.addEventListener("touchcancel", onPointerUp);
 
-    var initial = parseFloat(range.getAttribute("value") || range.value || "50", 10);
+    var initial = parseFloat(
+      range.getAttribute("value") || range.value || "50",
+      10
+    );
     setPosition(fig, isNaN(initial) ? 50 : initial);
-    syncLightMediaWidth(fig);
-
-    if (global.ResizeObserver) {
-      var ro = new global.ResizeObserver(function () {
-        syncLightMediaWidth(fig);
-      });
-      ro.observe(fig);
-    } else {
-      global.addEventListener("resize", function () {
-        syncLightMediaWidth(fig);
-      });
-    }
   }
 
   function init(root) {
@@ -118,7 +98,6 @@
     for (var i = 0; i < figures.length; i++) {
       bindFigure(figures[i]);
     }
-    initialized = true;
   }
 
   global.DarkSlider = {
