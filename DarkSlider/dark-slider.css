@@ -1,0 +1,117 @@
+/* Dark/light image comparison slider — standalone (no Sass variables) */
+
+figure.dark-slider {
+  --pos: 50%;
+  position: relative;
+  display: block;
+  max-width: 100%;
+  margin: 1.5em auto;
+  overflow: hidden;
+  user-select: none;
+  touch-action: none;
+}
+
+figure.dark-slider .dark-slider__dark,
+figure.dark-slider .dark-slider__light {
+  margin: 0;
+  padding: 0;
+}
+
+figure.dark-slider .dark-slider__dark {
+  position: relative;
+  z-index: 1;
+}
+
+figure.dark-slider .dark-slider__dark picture,
+figure.dark-slider .dark-slider__dark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+figure.dark-slider .dark-slider__light {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: var(--pos);
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+figure.dark-slider .dark-slider__light picture,
+figure.dark-slider .dark-slider__light img {
+  display: block;
+  max-width: none;
+  height: auto;
+  vertical-align: top;
+  /* width set by dark-slider.js to match figure (overlay clip is narrower) */
+}
+
+figure.dark-slider .dark-slider__handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  z-index: 3;
+  width: 0;
+  margin-left: -1px;
+  border-left: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+figure.dark-slider .dark-slider__handle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+figure.dark-slider .dark-slider__range {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+
+figure.dark-slider .dark-slider__range:focus {
+  outline: none;
+}
+
+figure.dark-slider .dark-slider__range:focus-visible + .dark-slider__handle,
+figure.dark-slider:focus-within .dark-slider__handle {
+  border-left-color: #0066cc;
+}
+
+figure.dark-slider figcaption {
+  margin-top: 0.5em;
+  text-align: center;
+  font-size: 0.9em;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  figure.dark-slider .dark-slider__handle {
+    transition: none;
+  }
+}
